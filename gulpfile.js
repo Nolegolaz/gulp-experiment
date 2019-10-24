@@ -3,7 +3,7 @@ const gulp = require('gulp');
 const plugins = require('gulp-load-plugins')();
 const browserSync = require('browser-sync').create();
 
-const isDevelopment = false;
+const isDevelopment = !process.env.NODE_ENV || process.env.NODE_ENV == 'dev';
 
 
 function returnFunc(name) { //функция чтоб в каждой зависимости не подключать 
