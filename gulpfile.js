@@ -10,11 +10,10 @@ function returnFunc(name) { //функция чтоб в каждой завис
     // gulp-load-plugins и не проводить проверку на разработку
     const requireFunc = require(`./gulpFiles/${name}`);
 
-    let funcContainer = {[name]: function() {
+    const funcContainer = {[name]: function() {
         return requireFunc(plugins, isDevelopment)
     }};
     
-
     return funcContainer[name]
 };
 
