@@ -2,7 +2,7 @@
 const gulp = require('gulp');
 
 function css(plugins, isDev) {
-    return gulp.src('./dev/**/**.scss')
+    return gulp.src('./dev/**/**.scss', {since: gulp.lastRun('css')})
         .pipe(plugins.if(isDev, plugins.sourcemaps.init()))
         .pipe(plugins.concat('style.scss'))
         .pipe(plugins.sass({outputStyle: plugins.if(!isDev, 'compressed')}))

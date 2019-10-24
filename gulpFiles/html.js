@@ -2,7 +2,7 @@
 const gulp = require('gulp');
 
 function html(plugins, isDev) {
-    return gulp.src('./dev/**/*.html')
+    return gulp.src('./dev/**/*.html', {since: gulp.lastRun('html')})
         .pipe(plugins.if(!isDev, plugins.htmlmin({ collapseWhitespace: true, removeComments: true })))
         .pipe(plugins.if(!isDev, plugins.revRewrite({manifest: gulp.src('./public/manifest/**/*.json', {allowEmpty: true})})))
         .pipe(gulp.dest('./public/'))

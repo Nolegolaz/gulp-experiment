@@ -2,7 +2,7 @@
 const gulp = require('gulp');
 
 function js(plugins, isDev) {
-    return gulp.src('./dev/**/*.js')
+    return gulp.src('./dev/**/*.js', {since: gulp.lastRun('js')})
         .pipe(plugins.if(!isDev, plugins.uglifyEs.default()))
         .pipe(plugins.if(!isDev, plugins.rev()))
         .pipe(gulp.dest('./public/'))
